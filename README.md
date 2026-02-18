@@ -5,7 +5,11 @@ This project has been created as part of the 42 curriculum by <chpasqui>
 #Instructions (must contain any releavant information about compilation, installation, and/or execution)
 
 #Resources (must lsit class references related to the topic as doc, articles, tutorials... as well as a decription of how AI was used for which taks ans which part of the project)
-- README of : https://github.com/Forstman1/inception-42
+- concept : README of : https://github.com/Forstman1/inception-42
+- concept : https://medium.com/@imyzf/inception-3979046d90a0
+- tuto d'installation docker : https://github.com/vbachele/Inception
+- super tuto : https://tuto.grademe.fr/inception/
+- documentation : https://docs.docker.com/engine/storage/volumes/
 - AI : for the formating of the text, in the markdown documentations.
 
 Difference between Virtual Machines vs Docker
@@ -20,7 +24,7 @@ DOCKER ENGINE : core component of Docker, lightweight runtime and packagin tool 
 - Docker daemon : a backgorund process that manages Docker containers
 - Docker client : a command-line tool that allow to interact with the Docker daemon (un terminal quoi non ?)
 
-DOCKER IMAGE : is a lighweiht, stand-alone executable package that includes everything needed to run a piece of software (app code, libraries, dependencies, runtime)
+DOCKER IMAGE : is a lighweight, stand-alone executable package that includes everything needed to run a piece of software (app code, libraries, dependencies, runtime)
 
 HOW DOES "DOCKER ENGINE" WORK :
 1. write a Dockerfile which is contains the instructions to build a Docker image. 
@@ -47,6 +51,22 @@ DOCKER-COMPOSE FILE : is YAML file use to define and run multiple Docker contain
         - `volumes` : defines the persistant storage for you app. A volume is a piece of storagge that is attached to the container that is used to store data that should persist even when the container is stopped or removed (okay mais du coup il va ou ?). There are 2 types :
         1. Bind mount : file/directory on the host machine that is mounted into a container. Any changes made to it, are refleceted on the host machine and in any other containers that has be mounted with the same file/directory
         2. Named volume : is created and managed by Docker, stored in a specific location on the host machine, and is not tied to a specific file/directory on the host. Useful for storing data that needs to be shared between containers, can be easily attached and detached.
-        - `networks` : defines the networks that containers should be connected to. A network is used to connect containers and allow them to communicate with each other.
+        - `networks` : defines the networks that containers should be connected to. A network is used to connect containers and allow them to communicate with each other.Existing types :
+        1. Bridge : default network type when you install Docker. Allows containers to communicate with each other and the host machine, with no access to the outside world.
+        2. Host : uses the host machine's network stcack and provides no isolation betwenn the host and the container
+        3. Overlay > allows containers running on different Docker hosts to communicaiton with each other
+        4. Macvlan: allows a container to have its own IP address on the same subnet as the hostmachine
+
+SERVICES to be created :
+- Mariadb : free and open-source database management system which is used to replace MySQL
+- Nginx : is a webserver which stores hmtl, js, images files and use http request to display a website. Nginx conf documents will be used to config our server and the right proxy connexion.
 
 
+
+QUESTIONS :
+- quel est la difference entre DOCKER ENGINE et DOCKER IMAGE ?
+- dans quel ordre est il mieux de proceder decrire dabord le docker-compose ou les Dockerfile de chaque service ?
+- en fait une fois que je fais mes fichiers de docker, ca veut dire que dans ma vm, il va falloir que jinstalle les differents services cest ca ? je comprend pas exactement l'ordre dans lequel il faut proceder ? Commencer par jsute lancer Nginx cest ca ? mais donc il faut que j'installe docker cest ca ?
+- Dans un article on parle de PID 1 et la difference avec Daemon Process, je n'ai pas compris. Du coup je dois faire quelque chose avec ce PID1 ?
+- Jai egalement vu passer WP-CLI, cest un client wordpress cest ca ? un peu comme un docker client ? il est dit que cest un tool, mais ca veut dire quil se trouve ou dans ma structure de dossier, dasn tools de requirements ?
+- Si j'aimerais faire les bonus, il est conseille de les implementer directement des le debut ou je peux les implementer apres avoir faire la partie obligatoire ?

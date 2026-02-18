@@ -9,6 +9,7 @@ terms, how an end user or administrator can:
 DOCKER CLIENT COMMANDS :
 docker build: Used to build a Docker image from a Dockerfile.
 docker run: Used to run a Docker container based on a Docker image.
+docker run -it : access to the terminal of the docker
 docker pull: Used to pull a Docker image from a registry, such as Docker Hub.
 docker push: Used to push a Docker image to a registry.
 docker ps: Used to list the running Docker containers on a system.

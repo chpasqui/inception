@@ -1,0 +1,31 @@
+version: 
+
+volumes:
+        wordpress:
+                  name: wordpress
+                  driver: local
+
+services :
+  nginx :
+    hostname: nginx
+    build:
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+      ports:
+      - "443:443"
+      restart: always
+      
+
+  wordpress:
+    hostname: wordpress
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+      restart : always
+    
+  mariadb:
+    hostname: mariadb
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+      restart : always
