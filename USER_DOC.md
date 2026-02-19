@@ -13,11 +13,13 @@ docker run -it : access to the terminal of the docker
 docker pull: Used to pull a Docker image from a registry, such as Docker Hub.
 docker push: Used to push a Docker image to a registry.
 docker ps: Used to list the running Docker containers on a system.
+docker ps -a : used to list all docker even the ones not running
 docker stop: Used to stop a running Docker container.
 docker rm: Used to remove a Docker container.
 docker rmi: Used to remove a Docker image.
 docker exec: Used to execute a command in a running Docker container.
 docker logs: Used to view the logs for a Docker container.
+docker images : to see all images created
 
 mais ou est ce qu on utilise les commandes de docker compose ?
 
@@ -33,3 +35,6 @@ logs: View output from containers
 exec: Run a command in a running container
 pull: Pull images from a registry
 push: Push images to a registry
+
+commande dans le terminal :
+my_print_default --verbose

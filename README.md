@@ -10,6 +10,7 @@ This project has been created as part of the 42 curriculum by <chpasqui>
 - tuto d'installation docker : https://github.com/vbachele/Inception
 - super tuto : https://tuto.grademe.fr/inception/
 - documentation : https://docs.docker.com/engine/storage/volumes/
+- tuto pour mariaDB : https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
 - AI : for the formating of the text, in the markdown documentations.
 
 Difference between Virtual Machines vs Docker
@@ -42,7 +43,7 @@ DOCKERFILE : is a plain text (specfic format and synthax) file contains the inst
     - Commands : to define the instructions for building the image
         - `FROM` : specifies the base image to use a the starting point for building the Docker image (provides fondational layers (est ce que ce sera un service ?) then possible to add additional lazers on top to customize the image)
         - `RUN` : executes a command in the terminal of the container. Ex: to install software or libraries that are needed by the app
-        - `CMD` :specifies the main command that teh container should run when it is started
+        - `CMD` :specifies the main command that the container should run when it is started
 
 DOCKER-COMPOSE FILE : is YAML file use to define and run multiple Docker containers as a single application
     - allows to define the services that make up your application (ex: tu veux utiliser wordpress et autre chose), and allows to start and stop all of the containers (app) with a single command.
@@ -61,8 +62,6 @@ SERVICES to be created :
 - Mariadb : free and open-source database management system which is used to replace MySQL
 - Nginx : is a webserver which stores hmtl, js, images files and use http request to display a website. Nginx conf documents will be used to config our server and the right proxy connexion.
 
-
-
 QUESTIONS :
 - quel est la difference entre DOCKER ENGINE et DOCKER IMAGE ?
 - dans quel ordre est il mieux de proceder decrire dabord le docker-compose ou les Dockerfile de chaque service ?
@@ -70,3 +69,4 @@ QUESTIONS :
 - Dans un article on parle de PID 1 et la difference avec Daemon Process, je n'ai pas compris. Du coup je dois faire quelque chose avec ce PID1 ?
 - Jai egalement vu passer WP-CLI, cest un client wordpress cest ca ? un peu comme un docker client ? il est dit que cest un tool, mais ca veut dire quil se trouve ou dans ma structure de dossier, dasn tools de requirements ?
 - Si j'aimerais faire les bonus, il est conseille de les implementer directement des le debut ou je peux les implementer apres avoir faire la partie obligatoire ?
+- pour MariaDB, je ne comprend pas pourquoi je dois aller dasn 50-server.cnf pour faire ces changements, dans le sens que dans le sujet cela me dit que je dois creer un container pour mariaDB qui est donc la base de donnee pour Wordpress, et connecte au port 3306. En regardant des tutos je vois pleins de changements de config que je dois faire, cependant comment est-ce que j'aurais pu savoir faire ces changements et ou les faire. Surtout je ne les comprends pas, les tutos disent les changements a faire mais ne les explique pas. Typiquement sur ce site : https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b

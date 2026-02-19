@@ -1,10 +1,7 @@
-# first specifies the base images or the containers 
-FROM Debian
+FROM debian:bullseye
+RUN apt update && apt upgrade 
+RUN apt install -y mariadb-server
+RUN mkdir -p /run/mysqld
+RUN chown mysql:mysql /run/mysqld
+CMD ["mariadbd"]
 
-# RUN commands in the containers shell and installas the specified packages
-RUN
-
-#copies the contents of conf/mariadb.conf on the host machine 
-COPY
-
-#specifies the command that will run when the container get started
