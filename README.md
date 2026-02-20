@@ -63,6 +63,8 @@ SERVICES to be created :
 - Nginx : is a webserver which stores hmtl, js, images files and use http request to display a website. Nginx conf documents will be used to config our server and the right proxy connexion.
 
 QUESTIONS :
+-question pour mariadb : pourquoi faire mysql_install_db puis /etc/init.d/mysql start, pourquoi dans ce dossier alors que mysql nexiste pas dans ce dossier il y a juste 
+mariadb, je peux pas lancer mariadb plutot ?
 - quel est la difference entre DOCKER ENGINE et DOCKER IMAGE ?
 - dans quel ordre est il mieux de proceder decrire dabord le docker-compose ou les Dockerfile de chaque service ?
 - en fait une fois que je fais mes fichiers de docker, ca veut dire que dans ma vm, il va falloir que jinstalle les differents services cest ca ? je comprend pas exactement l'ordre dans lequel il faut proceder ? Commencer par jsute lancer Nginx cest ca ? mais donc il faut que j'installe docker cest ca ?
