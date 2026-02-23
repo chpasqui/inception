@@ -12,6 +12,7 @@ This project has been created as part of the 42 curriculum by <chpasqui>
 - documentation : https://docs.docker.com/engine/storage/volumes/
 - tuto pour mariaDB : https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
 - AI : for the formating of the text, in the markdown documentations.
+- super FLOWCHARTS : https://github.com/azedineouhadou/inception-42/tree/main
 
 Difference between Virtual Machines vs Docker
 VM : occupy a lot of memory space, take long time to boot u, has low efficiencz and voums storagge cannot be shared acrross the VM. Whereis docker, occupy less memory space, is quick to boot up because it uses the running kernel that uou using, high efficiency and volumes storage can be shared across the host and the containers.
@@ -63,7 +64,7 @@ SERVICES to be created :
 - Nginx : is a webserver which stores hmtl, js, images files and use http request to display a website. Nginx conf documents will be used to config our server and the right proxy connexion.
 
 QUESTIONS :
--question pour mariadb : pourquoi faire mysql_install_db puis /etc/init.d/mysql start, pourquoi dans ce dossier alors que mysql nexiste pas dans ce dossier il y a juste 
+-questions pour mariadb : pourquoi faire mysql_install_db puis /etc/init.d/mysql start, pourquoi dans ce dossier alors que mysql nexiste pas dans ce dossier il y a juste 
 mariadb, je peux pas lancer mariadb plutot ?
 - quel est la difference entre DOCKER ENGINE et DOCKER IMAGE ?
 - dans quel ordre est il mieux de proceder decrire dabord le docker-compose ou les Dockerfile de chaque service ?

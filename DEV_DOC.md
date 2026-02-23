@@ -1,5 +1,4 @@
-Developer documentation This file must describe how a devel-
-oper can:
+Developer documentation This file must describe how a developer can:
 ◦ Set up the environment from scratch (prerequisites, configuration files, se-
 crets).
 ◦ Build and launch the project using the Makefile and Docker Compose.
