@@ -20,7 +20,7 @@ if [ ! -d "/var/lib/mysql/${MARIA_DB}" ]; then
     mariadb -uroot -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';"
     mariadb -uroot -p"${ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
 
-    mariadb-admin -uroot -p"${MYSQL_ROOT_PASSWORD}" shutdown #pour arreter le serveur proprement
+    mariadb-admin -uroot -p"${ROOT_PASSWORD}" shutdown #pour arreter le serveur proprement
 fi
 
 
