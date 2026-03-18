@@ -14,3 +14,9 @@ RUN wget https://wordpress.org/latest.zip -P /tmp && \
     rm /tmp/latest.zip &&\
     # user de php-fpm donner les droits sur dossier pour requete wordpress
     chown -R www-data:www-data /var/www/html 
+
+COPY conf/www.conf /etc/php/8.2/fpm/pool.d/www.conf
+
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P /tmp && \
+    chmod +x /tmp/wp-cli.phar && \
+    mv /tmp/wp-cli.phar /usr/local/bin/wp
