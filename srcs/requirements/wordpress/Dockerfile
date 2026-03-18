@@ -23,4 +23,4 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 
 COPY tools/wp_config.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/wp_config.sh
-ENTRYPOINT["/usr/local/bin/wp_config.sh"]
+ENTRYPOINT ["/usr/local/bin/wp_config.sh"]
