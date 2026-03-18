@@ -17,6 +17,10 @@ RUN wget https://wordpress.org/latest.zip -P /tmp && \
 
 COPY conf/www.conf /etc/php/8.2/fpm/pool.d/www.conf
 
-RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -P /tmp && \
-    chmod +x /tmp/wp-cli.phar && \
-    mv /tmp/wp-cli.phar /usr/local/bin/wp
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+    chmod +x wp-cli.phar && \
+    mv wp-cli.phar /usr/local/bin/wp
+
+COPY tools/wp_config.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/wp_config.sh
+ENTRYPOINT["/usr/local/bin/wp_config.sh"]

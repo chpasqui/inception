@@ -5,8 +5,8 @@ set -e #si une commande echoue stop mon script apres une erreur
 # the first requires STATE to be set but STATE can be an empty string whereas DEST must be set
 # and non empty
 : "${MARIA_DB:?Missing}"
-: "${MARIA_USER:?Missing}"
-: "${MARIA_USER_PASSWORD:?Missing}"
+: "${DB_USER:?Missing}"
+: "${DB_PASSWORD:?Missing}"
 : "${ROOT_PASSWORD:?Missing}"
 
 if [ ! -d "/var/lib/mysql/${MARIA_DB}" ]; then
@@ -15,8 +15,8 @@ if [ ! -d "/var/lib/mysql/${MARIA_DB}" ]; then
     service mariadb start
 
     mariadb -uroot -e "CREATE DATABASE IF NOT EXISTS \`${MARIA_DB}\`;"
-    mariadb -uroot -e "CREATE USER IF NOT EXISTS '${MARIA_USER}'@'%' IDENTIFIED BY '${MARIA_USER_PASSWORD}';"
-    mariadb -uroot -e "GRANT ALL PRIVILEGES ON \`${MARIA_DB}\`.* TO '${MARIA_USER}'@'%';"
+    mariadb -uroot -e "CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';"
+    mariadb -uroot -e "GRANT ALL PRIVILEGES ON \`${MARIA_DB}\`.* TO '${DB_USER}'@'%';"
     mariadb -uroot -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${ROOT_PASSWORD}';"
     mariadb -uroot -p"${ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
 
