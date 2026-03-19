@@ -50,7 +50,7 @@ DOCKER-COMPOSE FILE : is YAML file use to define and run multiple Docker contain
     - allows to define the services that make up your application (ex: tu veux utiliser wordpress et autre chose), and allows to start and stop all of the containers (app) with a single command.
     - Commands : to define the containers and how they should be set up and run
         - `services` : defines the services that make up the app. A service is a container that runs a specific app or component of your app.
-        - `volumes` : defines the persistant storage for you app. A volume is a piece of storagge that is attached to the container that is used to store data that should persist even when the container is stopped or removed (okay mais du coup il va ou ?). There are 2 types :
+        - `volumes` : defines the persistant storage for you app. A volume is a piece of storage that is attached to the container that is used to store data that should persist even when the container is stopped or removed (okay mais du coup il va ou ?). There are 2 types :
         1. Bind mount : file/directory on the host machine that is mounted into a container. Any changes made to it, are refleceted on the host machine and in any other containers that has be mounted with the same file/directory
         2. Named volume : is created and managed by Docker, stored in a specific location on the host machine, and is not tied to a specific file/directory on the host. Useful for storing data that needs to be shared between containers, can be easily attached and detached.
         - `networks` : defines the networks that containers should be connected to. A network is used to connect containers and allow them to communicate with each other.Existing types :
