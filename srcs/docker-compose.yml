@@ -9,7 +9,7 @@ services :
       networks:
         - inception
       volumes:
-        -wordpress:/var/www/html
+        - wordpress:/var/www/html
       depends_on:
         - wordpress
       restart: always
