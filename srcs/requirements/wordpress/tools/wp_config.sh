@@ -25,7 +25,7 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
         --allow-root \
         --role=author \
         --user_pass=$WP_USER_PASSWORD \
-        --path+/var/www/html
+        --path=/var/www/html
 fi
 
 exec /usr/sbin/php-fpm8.2 -F

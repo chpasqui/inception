@@ -10,8 +10,8 @@ down:
 
 clean:
 	docker compose -f $(DOCKER_COMPOSE_FILE) down -v
-	rm -rf /home/chpasqui/data/mariadb
-	rm -rf /home/chpasqui/data/wordpress
+	sudo rm -rf /home/chpasqui/data/mariadb
+	sudo rm -rf /home/chpasqui/data/wordpress
 
 fclean :clean
 	docker system prune -af
