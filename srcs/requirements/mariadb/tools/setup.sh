@@ -20,6 +20,10 @@ if [ ! -d "/var/lib/mysql/${MARIA_DB}" ]; then
 
     service mariadb start
 
+    until mariadb -uroot --connect-timeout=2 -e "SELECT 1" &>/dev/null; do
+        sleep 1
+    done
+
     mariadb -uroot -e "CREATE DATABASE IF NOT EXISTS \`${MARIA_DB}\`;"
     mariadb -uroot -e "CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';"
     mariadb -uroot -e "GRANT ALL PRIVILEGES ON \`${MARIA_DB}\`.* TO '${DB_USER}'@'%';"
