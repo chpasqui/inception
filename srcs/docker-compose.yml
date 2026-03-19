@@ -9,7 +9,7 @@ services :
     networks:
       - inception
     depends_on:
-      wordpress
+      - wordpress
     restart: always
 
   mariadb:
@@ -24,12 +24,17 @@ services :
       - db_root_password
       - db_password
     volumes:
-      -mariadb:/var/lib/mysql
+      - mariadb:/var/lib/mysql
     expose:
       - "3306"
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     restart : always
 
-      
   wordpress:
     hostname: wordpress
     build:
@@ -38,14 +43,15 @@ services :
     networks:
       - inception
     depends_on:
-      - mariadb
+      mariadb:
+        condition: service_healthy
     env_file: ".env"
     secrets:
       - db_password
       - wp_admin_password
       - wp_user_password
     volumes:
-      -wordpress:/var/www/html
+      - wordpress:/var/www/html
     expose:
       - "9000"
     restart : always
@@ -62,13 +68,14 @@ volumes:
   wordpress:
     name: wordpress
     driver: local
-    type: none
-    o: bind
-    device: /home/chpasqui/data/wordpress
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/chpasqui/data/wordpress
 
 networks:
   inception:
-  driver: bridge
+    driver: bridge
 
 secrets:
   db_password:
