@@ -1,60 +1,60 @@
 services :
-  nginx :
-    hostname: nginx
-    build:
-      context: ./requirements/nginx
-      dockerfile: Dockerfile
-    ports:
-      - "443:443"
-    networks:
-      - inception
-    depends_on:
-      - wordpress
-    restart: always
+    nginx :
+      hostname: nginx
+      build:
+        context: ./requirements/nginx
+        dockerfile: Dockerfile
+      ports:
+        - "443:443"
+      networks:
+        - inception
+      depends_on:
+        - wordpress
+      restart: always
 
-  mariadb:
-    hostname: mariadb
-    build:
-      context: ./requirements/mariadb
-      dockerfile: Dockerfile
-    networks:
-      - inception
-    env_file : .env
-    secrets:
-      - db_root_password
-      - db_password
-    volumes:
-      - mariadb:/var/lib/mysql
-    expose:
-      - "3306"
-    healthcheck:
-      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-    restart : always
+    mariadb:
+      hostname: mariadb
+      build:
+        context: ./requirements/mariadb
+        dockerfile: Dockerfile
+      networks:
+        - inception
+      env_file : .env
+      secrets:
+        - db_root_password
+        - db_password
+      volumes:
+        - mariadb:/var/lib/mysql
+      expose:
+        - "3306"
+      healthcheck:
+        test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+        start_period: 10s
+      restart : always
 
-  wordpress:
-    hostname: wordpress
-    build:
-      context: ./requirements/wordpress
-      dockerfile: Dockerfile
-    networks:
-      - inception
-    depends_on:
-      mariadb:
-        condition: service_healthy
-    env_file: ".env"
-    secrets:
-      - db_password
-      - wp_admin_password
-      - wp_user_password
-    volumes:
-      - wordpress:/var/www/html
-    expose:
-      - "9000"
-    restart : always
+    wordpress:
+      hostname: wordpress
+      build:
+        context: ./requirements/wordpress
+        dockerfile: Dockerfile
+      networks:
+        - inception
+      depends_on:
+        mariadb:
+          condition: service_healthy
+      env_file: ".env"
+      secrets:
+        - db_password
+        - wp_admin_password
+        - wp_user_password
+      volumes:
+        - wordpress:/var/www/html
+      expose:
+        - "9000"
+      restart : always
     
 volumes:
   mariadb:

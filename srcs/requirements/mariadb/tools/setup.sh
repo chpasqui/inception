@@ -15,6 +15,7 @@ DB_ROOT_PASSWORD=$(cat /run/secrets/db_root_password)
 : "${DB_ROOT_PASSWORD:?Missing}"
 
 if [ ! -d "/var/lib/mysql/${MARIA_DB}" ]; then
+    rm -rf /var/lib/mysql/*    
     mariadb-install-db --user=mysql --datadir=/var/lib/mysql
 
     service mariadb start
