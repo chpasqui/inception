@@ -43,13 +43,21 @@ services :
         context: ./requirement/bonus/adminer
         dockerfile: Dockerfile
       networks:
-        -inception
+        - inception
       depends_on:
         mariadb:
           condition: service_healthy
       restart: always
 
-
+    static:
+      hostname: static
+    build:
+      context: ./requirement/bonus/static
+      dockerfile: Dockerfile
+    networks:
+      - inception
+    restart: always
+    
     wordpress:
       hostname: wordpress
       build:
