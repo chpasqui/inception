@@ -1,6 +1,5 @@
 FROM debian:bookworm
-RUN apt update && apt upgrade 
-RUN apt install -y nginx openssl
+RUN apt update && apt upgrade -y && apt install -y nginx openssl
 RUN mkdir -p /etc/nginx/ssl
 RUN rm -f /etc/nginx/sites-enabled/default
 COPY conf/inception.conf /etc/nginx/sites-enabled/inception.conf

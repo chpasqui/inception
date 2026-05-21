@@ -67,9 +67,71 @@ QUESTIONS :
 -questions pour mariadb : pourquoi faire mysql_install_db puis /etc/init.d/mysql start, pourquoi dans ce dossier alors que mysql nexiste pas dans ce dossier il y a juste 
 mariadb, je peux pas lancer mariadb plutot ?
 - quel est la difference entre DOCKER ENGINE et DOCKER IMAGE ?
-- dans quel ordre est il mieux de proceder decrire dabord le docker-compose ou les Dockerfile de chaque service ?
-- en fait une fois que je fais mes fichiers de docker, ca veut dire que dans ma vm, il va falloir que jinstalle les differents services cest ca ? je comprend pas exactement l'ordre dans lequel il faut proceder ? Commencer par jsute lancer Nginx cest ca ? mais donc il faut que j'installe docker cest ca ?
 - Dans un article on parle de PID 1 et la difference avec Daemon Process, je n'ai pas compris. Du coup je dois faire quelque chose avec ce PID1 ?
 - Jai egalement vu passer WP-CLI, cest un client wordpress cest ca ? un peu comme un docker client ? il est dit que cest un tool, mais ca veut dire quil se trouve ou dans ma structure de dossier, dasn tools de requirements ?
-- Si j'aimerais faire les bonus, il est conseille de les implementer directement des le debut ou je peux les implementer apres avoir faire la partie obligatoire ?
 - pour MariaDB, je ne comprend pas pourquoi je dois aller dasn 50-server.cnf pour faire ces changements, dans le sens que dans le sujet cela me dit que je dois creer un container pour mariaDB qui est donc la base de donnee pour Wordpress, et connecte au port 3306. En regardant des tutos je vois pleins de changements de config que je dois faire, cependant comment est-ce que j'aurais pu savoir faire ces changements et ou les faire. Surtout je ne les comprends pas, les tutos disent les changements a faire mais ne les explique pas. Typiquement sur ce site : https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
+
+
+Etapes a faire :
+- Ecrire le ReadMe
+- avoir un resume de commment on fait et lance un docker
+- regarder si un des bonus est rapide a implementer
+    --> adminer / site statique / interface graphique pour Docker Portainer
+- Adminer : est ce que je peux mettre ce qui est dans le script directement dans le dockerFile ? Et surout a quoi ca sert.
+- Ce que je me rends compte c'est que je ne comprends pas bien toutes ces differents services et comment les ajouter et a quoi il serve et quel est lutilite de mettre tout ca dans un docker
+- Passer un a un les elements a checker sur la liste eval et regarder comment verifier pour voir que tout est okay : https://www.42evalhub.com/common/inception
+
+*This project has been created as part of the 42 curriculum by chpasqui.*
+
+## Description
+
+Inception is a system administration project that involves setting up a small
+infrastructure using Docker and Docker Compose inside a virtual machine.
+The stack consists of three services running in dedicated containers:
+- **NGINX** — the only entrypoint, handles HTTPS (TLSv1.2/1.3) on port 443
+- **WordPress + php-fpm** — the web application
+- **MariaDB** — the database
+
+### Virtual Machines vs Docker
+A VM emulates an entire operating system, takes a lot of memory, and boots slowly.
+Docker containers share the host kernel, are lightweight, boot instantly, and volumes
+can be shared between containers and the host.
+
+### Secrets vs Environment Variables
+Environment variables (stored in `.env`) are convenient but visible in the container's
+environment. Docker secrets are stored securely and mounted as files — better for
+passwords and sensitive credentials.
+
+### Docker Network vs Host Network
+A Docker network isolates containers from the outside world and lets them communicate
+with each other by service name. Host network removes that isolation — the container
+shares the host's network stack directly, which is forbidden in this project.
+
+### Docker Volumes vs Bind Mounts
+A bind mount links a specific path on the host to the container — tightly coupled to
+the host filesystem. A named volume is managed by Docker, stored under Docker's
+data directory, and is more portable and easier to share between containers.
+
+## Instructions
+
+```bash
+# Clone the repository and go to the project root
+make        # builds images and starts all containers
+make down   # stops and removes containers
+make clean  # removes containers, volumes, and built images
+```
+
+The site is accessible at: `https://chpasqui.42.fr`
+
+## Resources
+
+- https://github.com/Forstman1/inception-42
+- https://medium.com/@imyzf/inception-3979046d90a0
+- https://github.com/vbachele/Inception
+- https://tuto.grademe.fr/inception/
+- https://docs.docker.com/engine/storage/volumes/
+- https://medium.com/@ssterdev/inception-42-project-part-ii-19a06962cf3b
+- https://github.com/azedineouhadou/inception-42/tree/main
+
+**AI usage:** Claude was used to format and structure the Markdown documentation
+files (README.md, USER_DOC.md, DEV_DOC.md) and to debug Dockerfile errors.

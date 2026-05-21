@@ -38,3 +38,48 @@ push: Push images to a registry
 
 commande dans le terminal :
 my_print_default --verbose
+
+
+# User Documentation
+
+## What services does the stack provide?
+
+| Service   | Role                                      |
+|-----------|-------------------------------------------|
+| NGINX     | Web server, HTTPS entrypoint on port 443  |
+| WordPress | Website and admin panel                   |
+| MariaDB   | Database storing WordPress content        |
+
+## Start and stop the project
+
+```bash
+make        # starts everything
+make down   # stops everything
+```
+
+## Access the website and admin panel
+
+- Website: `https://chpasqui.42.fr`
+- Admin panel: `https://chpasqui.42.fr/wp-admin`
+
+Make sure `chpasqui.42.fr` points to your VM's local IP in `/etc/hosts`.
+
+## Locate and manage credentials
+
+All credentials are stored in:
+- `secrets/credentials.txt` — WordPress admin login
+- `secrets/db_password.txt` — MariaDB user password
+- `secrets/db_root_password.txt` — MariaDB root password
+- `srcs/.env` — environment variables (domain name, DB user, etc.)
+
+These files are **not committed to git**.
+
+## Check that services are running correctly
+
+```bash
+docker ps                        # lists running containers
+docker logs nginx                # logs for a specific container
+docker exec -it wordpress bash   # open a shell inside a container
+```
+
+All three containers (`nginx`, `wordpress`, `mariadb`) should show as `Up`.
