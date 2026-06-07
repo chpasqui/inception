@@ -1,8 +1,9 @@
 FROM debian:bookworm
-RUN apt update -y
 
-COPY ./tools/script.sh /
+RUN apt-get update && apt-get install -y wget php-cli php-mysql
 
-RUN apt install wget -y && apt-get install php pho-mysql -y
+COPY ./tools/script.sh /script.sh
+RUN chmod +x /script.sh
 
-CMD["/script.sh"]
+EXPOSE 8080
+CMD ["/script.sh"]
