@@ -40,10 +40,10 @@ services :
     adminer:
       hostname: adminer
       build:
-        context: ./requirement/bonus/adminer
+        context: ./requirements/bonus/adminer
         dockerfile: Dockerfile
       networks:
-        -inception
+        - inception
       depends_on:
         mariadb:
           condition: service_healthy
