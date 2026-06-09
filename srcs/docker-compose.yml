@@ -12,6 +12,7 @@ services :
         - wordpress:/var/www/html
       depends_on:
         - wordpress
+        - adminer
       restart: always
 
     mariadb:
@@ -40,13 +41,15 @@ services :
     adminer:
       hostname: adminer
       build:
-        context: ./requirement/bonus/adminer
+        context: ./requirements/bonus/adminer
         dockerfile: Dockerfile
       networks:
         - inception
       depends_on:
         mariadb:
           condition: service_healthy
+      expose:
+        - "8080"
       restart: always
 
     static:
