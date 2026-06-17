@@ -13,6 +13,7 @@ services :
       depends_on:
         - wordpress
         - adminer
+        - static
       restart: always
 
     mariadb:
@@ -49,17 +50,19 @@ services :
         mariadb:
           condition: service_healthy
       expose:
-        - "8080"
+        - "80"
       restart: always
 
     static:
       hostname: static
-    build:
-      context: ./requirement/bonus/static
-      dockerfile: Dockerfile
-    networks:
-      - inception
-    restart: always
+      build:
+        context: ./requirements/bonus/static
+        dockerfile: Dockerfile
+      networks:
+        - inception
+      expose:
+        - "80"
+      restart: always
     
     wordpress:
       hostname: wordpress
