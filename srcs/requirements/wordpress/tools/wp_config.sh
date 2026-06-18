@@ -28,7 +28,7 @@ if [ ! -f "/var/www/html/wp-config.php" ]; then
         --path=/var/www/html
 fi
 
-exec /usr/sbin/php-fpm8.2 -F
+exec "$@"
 
 
                 

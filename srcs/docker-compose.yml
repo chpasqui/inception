@@ -1,5 +1,6 @@
 services :
     nginx :
+      container_name: nginx
       hostname: nginx
       build:
         context: ./requirements/nginx
@@ -17,6 +18,7 @@ services :
       restart: always
 
     mariadb:
+      container_name: mariadb
       hostname: mariadb
       build:
         context: ./requirements/mariadb
@@ -40,6 +42,7 @@ services :
       restart : always
     
     adminer:
+      container_name: adminer
       hostname: adminer
       build:
         context: ./requirements/bonus/adminer
@@ -54,6 +57,7 @@ services :
       restart: always
 
     static:
+      container_name: static
       hostname: static
       build:
         context: ./requirements/bonus/static
@@ -65,6 +69,7 @@ services :
       restart: always
     
     wordpress:
+      container_name: wordpress
       hostname: wordpress
       build:
         context: ./requirements/wordpress
