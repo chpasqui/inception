@@ -92,7 +92,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/chpasqui/data/mariadb
+      device: /home/${LOGIN:-chpasqui}/data/mariadb
 
   wordpress:
     name: wordpress
@@ -100,7 +100,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/chpasqui/data/wordpress
+      device: /home/${LOGIN:-chpasqui}/data/wordpress
 
 networks:
   inception:
